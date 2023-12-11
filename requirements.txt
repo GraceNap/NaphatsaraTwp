@@ -3,4 +3,4 @@ openai
 pandas
 nltk
 translate
-
+newspaper3k
