@@ -2,7 +2,6 @@ streamlit
 openai
 pandas
 nltk
-collections 
 newspaper 
 translate
 
