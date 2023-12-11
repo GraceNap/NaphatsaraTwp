@@ -1,4 +1,5 @@
 import streamlit as st
+import openai
 import json
 import pandas as pd
 import nltk
@@ -14,14 +15,15 @@ nltk.download('stopwords')
 # Get the API key from the sidebar called OpenAI API key
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
-client = openai.OpenAI(api_key=user_api_key)
+# client = openai.OpenAI(api_key=user_api_key)
+openai.api_key = user_api_key
 
 def send_prompt(prompt, model="gpt-3.5-turbo"):
     messages_so_far = [
         {"role": "system", "content": "Obtain URL. Text Preprocessing. Summarizing the Article"},
         {'role': 'user', 'content': prompt},
     ]
-    response = client.chat.completions.create(
+    response = openai.chat.completions.create(
         model=model,
         messages=messages_so_far
     )
@@ -36,7 +38,7 @@ def process_input(input_text, model="gpt-3.5-turbo", max_chunk_length=1000):
             {"role": "system", "content": "Obtain URL. Text Preprocessing. Summarizing the Article"},
             {'role': 'user', 'content': chunk},
         ]
-        response = client.chat.completions.create(
+        response = openai.chat.completions.create(
             model=model,
             messages=messages_so_far
         )
@@ -66,7 +68,7 @@ if st.button('Submit'):
             {"role": "system", "content": "Obtain URL. Text Preprocessing. Summarizing the Article"},
             {'role': 'user', 'content': user_input},
         ]
-        response = client.chat.completions.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=messages_so_far
         )
