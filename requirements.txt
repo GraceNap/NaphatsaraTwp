@@ -1,6 +1,5 @@
 streamlit 
 openai
-json
 pandas
 nltk
 collections 
