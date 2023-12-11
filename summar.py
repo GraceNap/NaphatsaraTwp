@@ -11,7 +11,8 @@ from translate import Translator
 
 # Download the stopwords resource
 nltk.download('stopwords')
-nltk.download('punkt') 
+nltk.download('punkt')
+nltk.download('wordnet')
 
 # Get the API key from the sidebar called OpenAI API key
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
