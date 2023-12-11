@@ -4,3 +4,4 @@ pandas
 nltk
 translate
 newspaper3k
+openai==0.28
